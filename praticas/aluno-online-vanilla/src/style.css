@@ -52,10 +52,10 @@ body{
 
 .header-conteudo {
   display: flex;
-  justify-content: space-between; /* Joga o texto pra esquerda e ícone pra direita */
+  justify-content: space-between; 
   align-items: center;
   margin-bottom: 10px;
-  max-width: 800px; /* Alinha com a largura dos seus cards */
+  max-width: 800px; 
 }
 
 .principal{
