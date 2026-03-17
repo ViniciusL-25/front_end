@@ -40,7 +40,6 @@ body {
   list-style: none;
 }
 
-/* Adicionando o marcador da imagem */
 .sidebar li::before {
   content: "•";
   margin-right: 10px;
@@ -95,6 +94,7 @@ body {
 
 .box ul {
   padding: 20px;
+  margin: 0;
   list-style: none;
 }
 
