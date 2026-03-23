@@ -1,0 +1,37 @@
+* {
+ margin: 0;
+ padding: 0; 
+ box-sizing: border-box;
+}
+
+:root {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1rem; 
+    font-weight: 400; 
+    --cor-primaria: #659856;
+    --cor-secundaria: #556889;
+}
+
+body {
+    display: flex;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 16px;
+}
+
+img{
+    height: 64px;
+    width: 64px;
+    margin: 16px auto;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 24px;
+}
