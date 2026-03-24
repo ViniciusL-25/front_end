@@ -138,7 +138,7 @@ body {
   width: 100%;
   max-width: 380px;
   text-align: center;
-  box-shadow: 0 4px 6px rgb(0 0 0 / 0.05);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 5%);
 }
 
 .login-logo {
