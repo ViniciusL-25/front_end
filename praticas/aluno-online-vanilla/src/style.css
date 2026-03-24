@@ -138,7 +138,7 @@ body {
   width: 100%;
   max-width: 380px;
   text-align: center;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.05);
 }
 
 .login-logo {
@@ -154,29 +154,29 @@ body {
 
 .login-form {
   display: flex;
-  flex-direction: column; /* Faz um elemento ficar embaixo do outro */
-  text-align: right;       /* Alinha os textos à esquerda */
+  flex-direction: column; 
+  text-align: right;       
 }
 
 .login-label {
-  display: block;         /* Garante que o label ocupe a linha de cima */
-  margin-bottom: 8px;     /* Espaço entre o texto e a caixa */
+  display: block;         
+  margin-bottom: 8px;    
   font-size: 0.9rem;
   font-weight: 500;
   color: #333;
 }
 
 .login-input {
-  width: 100%;            /* Faz a caixa ocupar toda a largura disponível */
+  width: 100%;           
   padding: 0.8rem;
-  margin-bottom: 1.5rem;  /* Espaço entre a caixa e o próximo label */
+  margin-bottom: 1.5rem;  
   border: 1px solid #ccc;
   border-radius: 4px;
-  box-sizing: border-box; /* Importante para o padding não deformar a largura */
+  box-sizing: border-box; 
 }
 
 #login-button {
-  background-color: #eeeeee;
+  background-color: #eee;
   color: #333;
   border: none;
   padding: 0.8rem;
