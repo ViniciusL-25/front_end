@@ -1,4 +1,5 @@
-
+import logo from './assets/learn.svg'
+import avatar from './assets/avatar.svg'
 
 function App(){
   return <div className='flex flex-col md:flex-row'>  
