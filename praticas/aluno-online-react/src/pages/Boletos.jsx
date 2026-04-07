@@ -1,5 +1,16 @@
 import { useState } from "react";
 
+const getStatusColor = (status) => {
+  switch (status) {
+    case "Pago":
+      return "text-green-600 font-semibold";
+    case "Em atraso":
+      return "text-red-600 font-semibold";
+    default:
+      return "text-gray-700";
+  }
+};
+
 function Boletos() {
   const [menuAberto, setMenuAberto] = useState(false);
 
@@ -19,25 +30,20 @@ function Boletos() {
     { vencimento: "19/01/2027", valor: "500,00", status: "A Pagar" },
   ];
 
-  const getStatusColor = (status) => {
-    switch (status) {
-      case "Pago":
-        return "text-green-600 font-semibold";
-      case "Em atraso":
-        return "text-red-600 font-semibold";
-      default:
-        return "text-gray-700";
-    }
-  };
-
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-200">
+      {/* BOTÃO MENU MOBILE */}
       <div className="md:hidden flex justify-end p-4">
-        <button className="text-xl" onClick={() => setMenuAberto(!menuAberto)}>
+        <button
+          type="button"
+          className="text-xl"
+          onClick={() => setMenuAberto(!menuAberto)}
+        >
           ☰
         </button>
       </div>
 
+      {/* Sidebar */}
       <aside
         className={`
         bg-gray-100 p-6 w-full md:w-64
@@ -60,7 +66,9 @@ function Boletos() {
         </ul>
       </aside>
 
+      {/* Main */}
       <main className="flex-1 p-4 md:p-10">
+        {/* HEADER MOBILE */}
         <div className="flex justify-between items-start mb-4 md:hidden">
           <h1 className="text-3xl font-bold leading-tight">
             Meus <br /> Boletos
@@ -71,6 +79,7 @@ function Boletos() {
           </div>
         </div>
 
+        {/* HEADER DESKTOP */}
         <div className="hidden md:flex justify-between items-center mb-6">
           <h2 className="text-3xl font-bold">Meus Boletos</h2>
           <div className="w-10 h-10 rounded-full bg-black flex items-center justify-center text-white">
@@ -82,6 +91,7 @@ function Boletos() {
           Histórico de Pagamentos
         </h3>
 
+        {/* Tabela */}
         <div className="bg-white rounded-lg shadow-md overflow-x-auto">
           <table className="w-full min-w-[400px] text-left text-sm md:text-base">
             <thead className="bg-gray-200">
@@ -92,8 +102,11 @@ function Boletos() {
               </tr>
             </thead>
             <tbody>
-              {boletos.map((boleto, index) => (
-                <tr key={index} className="border-t hover:bg-gray-50">
+              {boletos.map((boleto) => (
+                <tr
+                  key={boleto.vencimento}
+                  className="border-t hover:bg-gray-50"
+                >
                   <td className="p-3">{boleto.vencimento}</td>
                   <td className="p-3">{boleto.valor}</td>
                   <td className={`p-3 ${getStatusColor(boleto.status)}`}>
