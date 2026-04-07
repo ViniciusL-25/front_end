@@ -1,7 +1,6 @@
 import Menu from "../components/Menu";
 import Card from "../components/Card";
 
-// 👉 IMPORTA AS IMAGENS
 import avatar from "../assets/avatar.svg";
 import cap from "../assets/learn.svg";
 

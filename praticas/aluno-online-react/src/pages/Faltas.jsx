@@ -1,31 +1,47 @@
+import { useState } from "react";
 import cap from "../assets/learn.svg";
 import avatar from "../assets/avatar.svg";
 
 function Faltas() {
-  return (
-    <div className="flex min-h-screen bg-gray-200">
-      <aside className="hidden md:flex flex-col w-64 bg-gray-300 p-6">
-        <div className="flex items-center gap-2 mb-8">
-          <img src={cap} alt="Quepe" className="w-6 h-6" />
+  const [menuAberto, setMenuAberto] = useState(false);
 
+  return (
+    <div className="flex flex-col md:flex-row min-h-screen bg-gray-200">
+      <div className="md:hidden flex justify-end p-4">
+        <button className="text-xl" onClick={() => setMenuAberto(!menuAberto)}>
+          ☰
+        </button>
+      </div>
+
+      <aside
+        className={`
+        bg-gray-300 p-6 w-full md:w-64
+        ${menuAberto ? "block" : "hidden"} md:flex md:flex-col
+      `}
+      >
+        <div className="flex items-center gap-2 mb-8 hidden md:flex">
+          <img src={cap} alt="Quepe" className="w-6 h-6" />
           <h1 className="text-lg font-bold text-gray-800">Aluno Online</h1>
         </div>
 
         <ul className="space-y-4 text-gray-700">
-          <li>Dashboard</li>
-          <li>Notas</li>
-          <li className="font-semibold">Faltas</li>
-          <li>Boletos</li>
-          <li>Requerimentos</li>
-          <li>Sair</li>
+          <li className="hover:text-black cursor-pointer">Dashboard</li>
+          <li className="hover:text-black cursor-pointer">Notas</li>
+          <li className="hover:text-black cursor-pointer font-semibold">
+            Faltas
+          </li>
+          <li className="hover:text-black cursor-pointer">Boletos</li>
+          <li className="hover:text-black cursor-pointer">Requerimentos</li>
+          <li className="hover:text-black cursor-pointer">Sair</li>
         </ul>
       </aside>
 
-      <main className="flex-1 p-8">
-        <div className="flex justify-between items-center mb-6">
-          <h2 className="text-3xl font-bold">Minhas Faltas</h2>
+      <main className="flex-1 p-4 md:p-10">
+        <div className="flex justify-between items-start mb-4 md:hidden">
+          <h1 className="text-3xl font-bold leading-tight">
+            Minhas <br /> Faltas
+          </h1>
 
-          {/* 👉 AVATAR (substitui o emoji) */}
           <img
             src={avatar}
             alt="Aluno"
@@ -33,15 +49,24 @@ function Faltas() {
           />
         </div>
 
-        <h3 className="text-xl font-semibold mb-4">
+        <div className="hidden md:flex justify-between items-center mb-6">
+          <h2 className="text-3xl font-bold">Minhas Faltas</h2>
+          <img
+            src={avatar}
+            alt="Aluno"
+            className="w-10 h-10 rounded-full object-cover"
+          />
+        </div>
+
+        <h3 className="text-xl md:text-2xl font-semibold mb-4">
           Histórico de Faltas por Semestre
         </h3>
 
-        <div className="bg-white rounded-lg shadow mb-6">
+        <div className="bg-white rounded-lg shadow mb-6 overflow-x-auto">
           <div className="bg-gray-200 px-4 py-3 font-semibold rounded-t-lg">
             2026.1
           </div>
-          <table className="w-full text-left">
+          <table className="w-full min-w-[500px] text-left">
             <thead className="bg-gray-100">
               <tr>
                 <th className="p-3">Disciplina</th>
@@ -69,11 +94,11 @@ function Faltas() {
           </table>
         </div>
 
-        <div className="bg-white rounded-lg shadow">
+        <div className="bg-white rounded-lg shadow overflow-x-auto">
           <div className="bg-gray-200 px-4 py-3 font-semibold rounded-t-lg">
             2025.2
           </div>
-          <table className="w-full text-left">
+          <table className="w-full min-w-[500px] text-left">
             <thead className="bg-gray-100">
               <tr>
                 <th className="p-3">Disciplina</th>
