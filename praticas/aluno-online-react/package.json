@@ -2,7 +2,7 @@
   "name": "aluno-online-react",
   "version": "0.0.0",
   "scripts": {
-    "lint": "eslint ."
+    "lint": "node ./node_modules/eslint/bin/eslint.js ."
   },
   "devDependencies": {
     "@eslint/js": "^9.39.4",
