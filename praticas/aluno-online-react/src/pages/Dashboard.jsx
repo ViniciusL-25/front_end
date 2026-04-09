@@ -12,7 +12,7 @@ function Dashboard() {
       <main className="flex-1 p-6 md:p-10">
         <div className="flex justify-between items-center mb-6">
           <div className="flex items-center gap-2">
-            <img src={cap} alt="Quepe" className="w-8 h-8" />
+            <img src={cap} alt="Quepe" className="w-8 h-7" />
 
             <h1 className="text-3xl font-bold text-gray-800">Olá, Aluno!</h1>
           </div>
