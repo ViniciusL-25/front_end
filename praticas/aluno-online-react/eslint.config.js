@@ -1,59 +1,29 @@
 import js from "@eslint/js";
-import react from "eslint-plugin-react";
+import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import { defineConfig, globalIgnores } from "eslint/config";
 
-export default [
-  js.configs.recommended,
-
+export default defineConfig([
+  globalIgnores(["dist"]),
   {
     files: ["**/*.{js,jsx}"],
-
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-
-      // 🔥 ISSO AQUI RESOLVE 90% DOS ERROS
-      globals: {
-        window: "readonly",
-        document: "readonly",
-        console: "readonly",
-        fetch: "readonly",
-        setTimeout: "readonly",
-        clearTimeout: "readonly",
-        performance: "readonly",
-        queueMicrotask: "readonly",
-        AbortController: "readonly",
-        FormData: "readonly",
-        navigator: "readonly",
-        matchMedia: "readonly",
-      },
-
+      ecmaVersion: 2020,
+      globals: globals.browser,
       parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
+        ecmaVersion: "latest",
+        ecmaFeatures: { jsx: true },
+        sourceType: "module",
       },
     },
-
-    plugins: {
-      react,
-      "react-hooks": reactHooks,
-    },
-
-    settings: {
-      react: {
-        version: "detect",
-      },
-    },
-
     rules: {
-      "react/react-in-jsx-scope": "off",
-      "react/prop-types": "off",
-
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-
-      "no-unused-vars": "off",
+      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
     },
   },
-];
+]);
