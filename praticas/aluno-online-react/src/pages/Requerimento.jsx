@@ -1,27 +1,7 @@
 import { useState } from "react";
 
-function Requerimentos() {
+function Requerimentos({ requerimentos }) {
   const [menuAberto, setMenuAberto] = useState(false);
-
-  const requerimentos = [
-    { tipo: "Revisão de Menção", data: "15/12/2025", situacao: "Indeferido" },
-    {
-      tipo: "Dispensa de Disciplina",
-      data: "12/06/2025",
-      situacao: "Indeferido",
-    },
-    {
-      tipo: "Trancamento de Matrícula",
-      data: "05/01/2024",
-      situacao: "Deferido",
-    },
-    { tipo: "Mudança de Turno", data: "10/10/2023", situacao: "Deferido" },
-    {
-      tipo: "Renovação de Matrícula",
-      data: "20/02/2023",
-      situacao: "Deferido",
-    },
-  ];
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-200">
@@ -42,14 +22,12 @@ function Requerimentos() {
         </h2>
 
         <ul className="space-y-4 text-gray-700">
-          <li className="hover:text-black cursor-pointer">Dashboard</li>
-          <li className="hover:text-black cursor-pointer">Notas</li>
-          <li className="hover:text-black cursor-pointer">Faltas</li>
-          <li className="hover:text-black cursor-pointer">Boletos</li>
-          <li className="hover:text-black cursor-pointer font-semibold">
-            Requerimentos
-          </li>
-          <li className="hover:text-black cursor-pointer">Sair</li>
+          <li>Dashboard</li>
+          <li>Notas</li>
+          <li>Faltas</li>
+          <li>Boletos</li>
+          <li className="font-semibold">Requerimentos</li>
+          <li>Sair</li>
         </ul>
       </aside>
 

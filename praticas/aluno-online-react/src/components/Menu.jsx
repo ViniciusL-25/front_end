@@ -1,6 +1,6 @@
 import cap from "../assets/learn.svg";
 
-function Menu() {
+function Menu({ itensMenu }) {
   return (
     <aside className="hidden md:flex flex-col w-64 bg-gray-300 p-6">
       <div className="flex items-center gap-2 mb-8">
