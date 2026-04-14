@@ -2,7 +2,7 @@ name: Validar Sintaxe (JS)
 
 on:
   pull_request:
-    branches: [ develop ]
+    branches: [develop]
 
 jobs:
   check-vanilla:
@@ -16,13 +16,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
-          cache: 'npm'
-          cache-dependency-path: './praticas/aluno-online-vanilla/package-lock.json'
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "./praticas/aluno-online-vanilla/package-lock.json"
 
       - name: Instalar Dependências
         working-directory: ./praticas/aluno-online-vanilla
-        run: npm install
+        run: npm ci
 
       - name: Executar Linters (HTML, CSS, JS)
         working-directory: ./praticas/aluno-online-vanilla
@@ -37,13 +37,13 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 24
-          cache: 'npm'
-          cache-dependency-path: './praticas/aluno-online-react/package-lock.json'
+          node-version: 20
+          cache: "npm"
+          cache-dependency-path: "./praticas/aluno-online-react/package-lock.json"
 
       - name: Instalar Dependências
         working-directory: ./praticas/aluno-online-react
-        run: npm install
+        run: npm ci
 
       - name: Executar Lint React (ESLint)
         working-directory: ./praticas/aluno-online-react
