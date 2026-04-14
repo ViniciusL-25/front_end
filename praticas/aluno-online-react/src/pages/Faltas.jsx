@@ -2,7 +2,7 @@ import { useState } from "react";
 import cap from "../assets/learn.svg";
 import avatar from "../assets/avatar.svg";
 
-function Faltas() {
+function Faltas({ faltas }) {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
@@ -25,14 +25,12 @@ function Faltas() {
         </div>
 
         <ul className="space-y-4 text-gray-700">
-          <li className="hover:text-black cursor-pointer">Dashboard</li>
-          <li className="hover:text-black cursor-pointer">Notas</li>
-          <li className="hover:text-black cursor-pointer font-semibold">
-            Faltas
-          </li>
-          <li className="hover:text-black cursor-pointer">Boletos</li>
-          <li className="hover:text-black cursor-pointer">Requerimentos</li>
-          <li className="hover:text-black cursor-pointer">Sair</li>
+          <li>Dashboard</li>
+          <li>Notas</li>
+          <li className="font-semibold">Faltas</li>
+          <li>Boletos</li>
+          <li>Requerimentos</li>
+          <li>Sair</li>
         </ul>
       </aside>
 
@@ -62,69 +60,36 @@ function Faltas() {
           Histórico de Faltas por Semestre
         </h3>
 
-        <div className="bg-white rounded-lg shadow mb-6 overflow-x-auto">
-          <div className="bg-gray-200 px-4 py-3 font-semibold rounded-t-lg">
-            2026.1
-          </div>
-          <table className="w-full min-w-[500px] text-left">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="p-3">Disciplina</th>
-                <th className="p-3">Total de Faltas</th>
-                <th className="p-3">% de Presença</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-t">
-                <td className="p-3">BI e Data Warehousing</td>
-                <td className="p-3">0</td>
-                <td className="p-3">100%</td>
-              </tr>
-              <tr className="border-t">
-                <td className="p-3">Construção de Frontend</td>
-                <td className="p-3">0</td>
-                <td className="p-3">100%</td>
-              </tr>
-              <tr className="border-t">
-                <td className="p-3">Manutenção de Software e Devops</td>
-                <td className="p-3">0</td>
-                <td className="p-3">100%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        {faltas.map((semestre) => (
+          <div
+            key={semestre.periodo}
+            className="bg-white rounded-lg shadow mb-6 overflow-x-auto"
+          >
+            <div className="bg-gray-200 px-4 py-3 font-semibold rounded-t-lg">
+              {semestre.periodo}
+            </div>
 
-        <div className="bg-white rounded-lg shadow overflow-x-auto">
-          <div className="bg-gray-200 px-4 py-3 font-semibold rounded-t-lg">
-            2025.2
+            <table className="w-full min-w-[500px] text-left">
+              <thead className="bg-gray-100">
+                <tr>
+                  <th className="p-3">Disciplina</th>
+                  <th className="p-3">Total de Faltas</th>
+                  <th className="p-3">% de Presença</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {semestre.disciplinas.map((disciplina, index) => (
+                  <tr key={index} className="border-t">
+                    <td className="p-3">{disciplina.nome}</td>
+                    <td className="p-3">{disciplina.faltas}</td>
+                    <td className="p-3">{disciplina.presenca}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <table className="w-full min-w-[500px] text-left">
-            <thead className="bg-gray-100">
-              <tr>
-                <th className="p-3">Disciplina</th>
-                <th className="p-3">Total de Faltas</th>
-                <th className="p-3">% de Presença</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="border-t">
-                <td className="p-3">Construção de Backend</td>
-                <td className="p-3">27</td>
-                <td className="p-3">87.5%</td>
-              </tr>
-              <tr className="border-t">
-                <td className="p-3">Estrutura de Dados</td>
-                <td className="p-3">9</td>
-                <td className="p-3">85%</td>
-              </tr>
-              <tr className="border-t">
-                <td className="p-3">Gerenciamento de Projetos</td>
-                <td className="p-3">10.5</td>
-                <td className="p-3">82.5%</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
+        ))}
       </main>
     </div>
   );
