@@ -1,46 +1,29 @@
 import js from "@eslint/js";
-import react from "eslint-plugin-react";
+import globals from "globals";
 import reactHooks from "eslint-plugin-react-hooks";
+import reactRefresh from "eslint-plugin-react-refresh";
+import { defineConfig, globalIgnores } from "eslint/config";
 
-export default [
-  js.configs.recommended,
+export default defineConfig([
+  globalIgnores(["dist"]),
   {
-    files: ["**/*.jsx"],
-    plugins: {
-      react,
-      "react-hooks": reactHooks,
-    },
+    files: ["**/*.{js,jsx}"],
+    extends: [
+      js.configs.recommended,
+      reactHooks.configs.flat.recommended,
+      reactRefresh.configs.vite,
+    ],
     languageOptions: {
-      ecmaVersion: "latest",
-      sourceType: "module",
-      globals: {
-        document: "readonly",
-        window: "readonly",
-      },
+      ecmaVersion: 2020,
+      globals: globals.browser,
       parserOptions: {
-        ecmaFeatures: {
-          jsx: true,
-        },
-      },
-    },
-    settings: {
-      react: {
-        version: "detect",
+        ecmaVersion: "latest",
+        ecmaFeatures: { jsx: true },
+        sourceType: "module",
       },
     },
     rules: {
-      // React moderno (não precisa importar React)
-      "react/react-in-jsx-scope": "off",
-
-      // Desliga validação de props (você não tá usando)
-      "react/prop-types": "off",
-
-      // Hooks (boa prática)
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn",
-
-      // Desliga warnings chatos
-      "no-unused-vars": "off",
+      "no-unused-vars": ["error", { varsIgnorePattern: "^[A-Z_]" }],
     },
   },
-];
+]);
