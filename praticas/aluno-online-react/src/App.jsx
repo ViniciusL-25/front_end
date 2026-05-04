@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Login from "./pages/Login";
+
 import Dashboard from "./pages/Dashboard";
 import Faltas from "./pages/Faltas";
 import Notas from "./pages/Notas";
@@ -7,6 +9,7 @@ import Boletos from "./pages/Boletos";
 import Requerimentos from "./pages/Requerimento";
 
 function App() {
+  const [logado, setLogado] = useState(false);
   const [pagina, setPagina] = useState("dashboard");
 
   const listaBoletos = [
@@ -56,6 +59,10 @@ function App() {
       ],
     },
   ];
+
+  if (!logado) {
+    return <Login onLogin={() => setLogado(true)} />;
+  }
 
   return (
     <>
