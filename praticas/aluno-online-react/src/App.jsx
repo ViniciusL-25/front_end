@@ -1,88 +1,120 @@
 import { useState } from "react";
-
-import Login from "./pages/Login";
-
-import Dashboard from "./pages/Dashboard";
-import Faltas from "./pages/Faltas";
-import Notas from "./pages/Notas";
-import Boletos from "./pages/Boletos";
-import Requerimentos from "./pages/Requerimento";
+import reactLogo from "./assets/react.svg";
+import viteLogo from "./assets/vite.svg";
+import heroImg from "./assets/hero.png";
+import "./App.css";
 
 function App() {
-  const [logado, setLogado] = useState(false);
-  const [pagina, setPagina] = useState("dashboard");
-
-  const listaBoletos = [
-    { vencimento: "19/01/2026", valor: "500,00", status: "Pago" },
-    { vencimento: "19/02/2026", valor: "500,00", status: "Em atraso" },
-    { vencimento: "19/03/2026", valor: "500,00", status: "A Pagar" },
-  ];
-
-  const listaRequerimentos = [
-    { tipo: "Revisão de Menção", data: "15/12/2025", situacao: "Indeferido" },
-    {
-      tipo: "Dispensa de Disciplina",
-      data: "12/06/2025",
-      situacao: "Indeferido",
-    },
-    {
-      tipo: "Trancamento de Matrícula",
-      data: "05/01/2024",
-      situacao: "Deferido",
-    },
-  ];
-
-  const dadosNotas = [
-    {
-      periodo: "2025.2",
-      disciplinas: [
-        {
-          nome: "Construção de Backend",
-          a1: "5.4",
-          a2: "6.2",
-          a3: "",
-          mencao: "MM",
-        },
-      ],
-    },
-  ];
-
-  const dadosFaltas = [
-    {
-      periodo: "2025.2",
-      disciplinas: [
-        {
-          nome: "Construção de Backend",
-          faltas: 27,
-          presenca: "87.5%",
-        },
-      ],
-    },
-  ];
-
-  if (!logado) {
-    return <Login onLogin={() => setLogado(true)} />;
-  }
+  const [count, setCount] = useState(0);
 
   return (
     <>
-      <div className="p-4 flex gap-2">
-        <button onClick={() => setPagina("dashboard")}>Dashboard</button>
-        <button onClick={() => setPagina("notas")}>Notas</button>
-        <button onClick={() => setPagina("faltas")}>Faltas</button>
-        <button onClick={() => setPagina("boletos")}>Boletos</button>
-        <button onClick={() => setPagina("requerimentos")}>
-          Requerimentos
+      <section id="center">
+        <div className="hero">
+          <img src={heroImg} className="base" width="170" height="179" alt="" />
+          <img src={reactLogo} className="framework" alt="React logo" />
+          <img src={viteLogo} className="vite" alt="Vite logo" />
+        </div>
+        <div>
+          <h1>Get started</h1>
+          <p>
+            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
+          </p>
+        </div>
+        <button
+          type="button"
+          className="counter"
+          onClick={() => setCount((count) => count + 1)}
+        >
+          Count is {count}
         </button>
-      </div>
+      </section>
 
-      {pagina === "dashboard" && <Dashboard />}
-      {pagina === "notas" && <Notas notas={dadosNotas} />}
-      {pagina === "faltas" && <Faltas faltas={dadosFaltas} />}
-      {pagina === "boletos" && <Boletos boletos={listaBoletos} />}
-      {pagina === "requerimentos" && (
-        <Requerimentos requerimentos={listaRequerimentos} />
-      )}
+      <div className="ticks"></div>
+
+      <section id="next-steps">
+        <div id="docs">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#documentation-icon"></use>
+          </svg>
+          <h2>Documentation</h2>
+          <p>Your questions, answered</p>
+          <ul>
+            <li>
+              <a href="https://vite.dev/" target="_blank">
+                <img className="logo" src={viteLogo} alt="" />
+                Explore Vite
+              </a>
+            </li>
+            <li>
+              <a href="https://react.dev/" target="_blank">
+                <img className="button-icon" src={reactLogo} alt="" />
+                Learn more
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div id="social">
+          <svg className="icon" role="presentation" aria-hidden="true">
+            <use href="/icons.svg#social-icon"></use>
+          </svg>
+          <h2>Connect with us</h2>
+          <p>Join the Vite community</p>
+          <ul>
+            <li>
+              <a href="https://github.com/vitejs/vite" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#github-icon"></use>
+                </svg>
+                GitHub
+              </a>
+            </li>
+            <li>
+              <a href="https://chat.vite.dev/" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#discord-icon"></use>
+                </svg>
+                Discord
+              </a>
+            </li>
+            <li>
+              <a href="https://x.com/vite_js" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#x-icon"></use>
+                </svg>
+                X.com
+              </a>
+            </li>
+            <li>
+              <a href="https://bsky.app/profile/vite.dev" target="_blank">
+                <svg
+                  className="button-icon"
+                  role="presentation"
+                  aria-hidden="true"
+                >
+                  <use href="/icons.svg#bluesky-icon"></use>
+                </svg>
+                Bluesky
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <div className="ticks"></div>
+      <section id="spacer"></section>
     </>
   );
 }
