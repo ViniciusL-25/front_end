@@ -1,7 +1,9 @@
 import "./Menu.css";
-import { NavLink } from "react-router";
+import { NavLink, Link } from "react-router";
 
 function Menu() {
+  const usuarioId = 0;
+
   return (
     <nav>
       <ul>
@@ -9,13 +11,16 @@ function Menu() {
           <NavLink to="/">Home</NavLink>
         </li>
         <li>
-          <NavLink to="/perfil">Perfil</NavLink>
+          <NavLink to={`/perfil/${usuarioId}`}>Perfil</NavLink>
         </li>
         <li>
           <NavLink to="/settings">Configurações</NavLink>
         </li>
         <li>
           <NavLink to="/about">Sobre</NavLink>
+        </li>
+        <li>
+          <Link to="/login">Sair</Link>
         </li>
       </ul>
     </nav>

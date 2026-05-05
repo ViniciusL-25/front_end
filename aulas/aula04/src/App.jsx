@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Perfil from "./pages/Perfil";
 import Settings from "./pages/Settings";
 import Erro404 from "./pages/Erro404";
+import Login from "./pages/Login";
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
         {/*template */}
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
-        <Route path="/perfil" element={<Perfil />} />
+        <Route path="/perfil/:id" element={<Perfil />} />
         <Route path="/settings" element={<Settings />} />
         <Route path="*" element={<Erro404 />} />
       </Route>
+      <Route path="/login" element={<Login />} />
     </Routes>
   );
 }
