@@ -1,11 +1,23 @@
 import "./Menu.css";
-import { NavLink, Link } from "react-router";
+import { NavLink, useNavigate } from "react-router";
+import { useAuth } from "../contexts/AuthContext";
 
 function Menu() {
   const usuarioId = 0;
 
+  const { logout, usuario } = useAuth();
+
+  const navigate = useNavigate();
+
+  const handleSair = (e) => {
+    e.preventDefault();
+    logout();
+    navigate("/login");
+  };
+
   return (
     <nav>
+      <h1>{usuario.nome}</h1>
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
@@ -20,7 +32,9 @@ function Menu() {
           <NavLink to="/about">Sobre</NavLink>
         </li>
         <li>
-          <Link to="/login">Sair</Link>
+          <a href="#" onClick={handleSair}>
+            Sair 
+            </a>
         </li>
       </ul>
     </nav>
