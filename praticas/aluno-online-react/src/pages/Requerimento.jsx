@@ -1,6 +1,21 @@
 import { useState } from "react";
 
-function Requerimentos({ requerimentos }) {
+
+ const listaRequerimentos = [
+    { tipo: "Revisão de Menção", data: "15/12/2025", situacao: "Indeferido" },
+    {
+      tipo: "Dispensa de Disciplina",
+      data: "12/06/2025",
+      situacao: "Indeferido",
+    },
+    {
+      tipo: "Trancamento de Matrícula",
+      data: "05/01/2024",
+      situacao: "Deferido",
+    },
+  ];
+
+function Requerimentos() {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
@@ -65,7 +80,7 @@ function Requerimentos({ requerimentos }) {
             </thead>
 
             <tbody>
-              {requerimentos.map((req, index) => (
+              {listaRequerimentos.map((req, index) => (
                 <tr key={index} className="border-t hover:bg-gray-50">
                   <td className="p-3">{req.tipo}</td>
                   <td className="p-3">{req.data}</td>
