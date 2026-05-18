@@ -2,7 +2,20 @@ import { useState } from "react";
 import cap from "../assets/learn.svg";
 import avatar from "../assets/avatar.svg";
 
-function Faltas({ faltas }) {
+const dadosFaltas = [
+    {
+      periodo: "2025.2",
+      disciplinas: [
+        {
+          nome: "Construção de Backend",
+          faltas: 27,
+          presenca: "87.5%",
+        },
+      ],
+    },
+  ];
+
+function Faltas() {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
@@ -60,7 +73,7 @@ function Faltas({ faltas }) {
           Histórico de Faltas por Semestre
         </h3>
 
-        {faltas.map((semestre) => (
+        {dadosFaltas.map((semestre) => (
           <div
             key={semestre.periodo}
             className="bg-white rounded-lg shadow mb-6 overflow-x-auto"

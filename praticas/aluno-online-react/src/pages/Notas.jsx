@@ -1,7 +1,28 @@
 import { useState } from "react";
 
-function Notas({ notas }) {
+
+
+
+
+  const dadosNotas = [
+    {
+      periodo: "2025.2",
+      disciplinas: [
+        {
+          nome: "Construção de Backend",
+          a1: "5.4",
+          a2: "6.2",
+          a3: "",
+          mencao: "MM",
+        },
+      ],
+    },
+  ];
+
+
+function Notas() {
   const [menuAberto, setMenuAberto] = useState(false);
+
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-200">
@@ -53,7 +74,7 @@ function Notas({ notas }) {
           Histórico de Notas por Semestre
         </h3>
 
-        {notas.map((semestre) => (
+        {dadosNotas.map((semestre) => (
           <div
             key={semestre.periodo}
             className="bg-white rounded-lg shadow mb-6 overflow-x-auto"

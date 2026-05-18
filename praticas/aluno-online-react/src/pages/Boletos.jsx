@@ -11,7 +11,14 @@ const getStatusColor = (status) => {
   }
 };
 
-function Boletos({ boletos }) {
+ const listaBoletos = [
+    { vencimento: "19/01/2026", valor: "500,00", status: "Pago" },
+    { vencimento: "19/02/2026", valor: "500,00", status: "Em atraso" },
+    { vencimento: "19/03/2026", valor: "500,00", status: "A Pagar" },
+  ];
+
+
+function Boletos() {
   const [menuAberto, setMenuAberto] = useState(false);
 
   return (
@@ -81,7 +88,7 @@ function Boletos({ boletos }) {
             </thead>
 
             <tbody>
-              {boletos.map((boleto) => (
+              {listaBoletos.map((boleto) => (
                 <tr
                   key={boleto.vencimento}
                   className="border-t hover:bg-gray-50"
@@ -99,6 +106,7 @@ function Boletos({ boletos }) {
       </main>
     </div>
   );
+  
 }
 
 export default Boletos;
