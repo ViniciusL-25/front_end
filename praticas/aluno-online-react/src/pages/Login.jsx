@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import "./Login.css";
 
 import cap from "../assets/learn.svg";
@@ -15,13 +16,14 @@ function Login() {
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
 
-
+ const { login } = useAuth();
 
   function validarEmail(valor) {
     return /\S+@\S+\.\S+/.test(valor);
   }
   
   const navigate = useNavigate();
+  login({ username: "vinicius@iesb.br", password: "123456"}); 
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -49,9 +51,9 @@ function Login() {
       valido = false;
     }
 
-    
 
     if (valido) {
+      
       navigate("/dashboard");
     }
   }

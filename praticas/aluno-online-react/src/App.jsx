@@ -9,11 +9,17 @@ import Notas from "./pages/Notas";
 import Boletos from "./pages/Boletos";
 import Requerimentos from "./pages/Requerimento";
 import Layout from "./layout/Layout";
+import { useAuth } from "./contexts/AuthContext";
+
 
 
 function App () {
+
+  const { logado }= useAuth();
+
   return (
     <Routes>
+    { logado ? (
       <Route element={<Layout />}>
         {/*template */}
         <Route path="/" element={<Login />} />
@@ -23,7 +29,9 @@ function App () {
         <Route path="/notas" element={<Notas />} />
         <Route path="/requerimentos" element={<Requerimentos />} />
       </Route>
+    ) : (
       <Route path="/login" element={<Login />} />
+    )}
     </Routes>
   );
 }
