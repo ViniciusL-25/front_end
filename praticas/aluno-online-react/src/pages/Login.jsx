@@ -32,7 +32,6 @@ function Login() {
   }
   
   const navigate = useNavigate();
-  login({ username: "vinicius@iesb.br", password: "123456"}); 
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -60,6 +59,7 @@ function Login() {
       valido = false;
     }
 
+    
 
     if (valido){
       handleEntrar();
