@@ -6,13 +6,9 @@ function AuthProvider({ children }) {
   const [usuario, setUsuario] = useState({});
   const [logado, setLogado] = useState(false);
 
-  const login = (dados) => {
-    // chama API backend futuramente
-
-    setUsuario({
-      nome: dados.username,
-    });
-
+  const login = () => {
+    // chama a API backend 
+    setUsuario({ nome: "Vinicius" });
     setLogado(true);
   };
 
@@ -22,14 +18,7 @@ function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider
-      value={{
-        logado,
-        usuario,
-        login,
-        logout,
-      }}
-    >
+    <AuthContext.Provider value={{ logado, usuario, login, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -39,4 +28,5 @@ function useAuth() {
   return useContext(AuthContext);
 }
 
-export { useAuth, AuthProvider };
+export { AuthProvider };
+export { useAuth };
