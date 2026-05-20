@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 import "./Login.css";
 
 import cap from "../assets/learn.svg";
@@ -15,7 +16,16 @@ function Login() {
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
 
+  const { login } = useAuth();
 
+  const handleEntrar = () => {
+  login({
+    username: email,
+    password: senha,
+  });
+
+  navigate("/dashboard");
+};
 
   function validarEmail(valor) {
     return /\S+@\S+\.\S+/.test(valor);
@@ -51,8 +61,8 @@ function Login() {
 
     
 
-    if (valido) {
-      navigate("/dashboard");
+    if (valido){
+      handleEntrar();
     }
   }
 
