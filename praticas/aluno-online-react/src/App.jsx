@@ -9,7 +9,7 @@ import Boletos from "./pages/Boletos";
 import Requerimentos from "./pages/Requerimento";
 import Layout from "./layout/Layout";
 
-import { useAuth } from "./contexts/AuthContext";
+import { useAuth } from "./contexts/useAuth";
 
 function App() {
   const { logado } = useAuth();
