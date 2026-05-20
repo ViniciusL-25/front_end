@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/useAuth";
 import "./Login.css";
+
 
 import cap from "../assets/learn.svg";
 import InputMatricula from "../components/InputMatricula";
