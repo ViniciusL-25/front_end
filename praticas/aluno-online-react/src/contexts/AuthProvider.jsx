@@ -1,6 +1,6 @@
-import { createContext, useState } from "react";
-
-export const AuthContext = createContext();
+// praticas/aluno-online-react/src/contexts/AuthProvider.jsx
+import { useState } from "react";
+import { AuthContext } from "./AuthContext";
 
 export function AuthProvider({ children }) {
   const [usuario, setUsuario] = useState({});

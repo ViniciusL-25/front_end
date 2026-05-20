@@ -1,6 +1,6 @@
 import cap from "../assets/learn.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/useAuth";
+import { useAuth } from "../contexts/AuthContext";
 
 
 function Menu() {
@@ -39,7 +39,7 @@ function Menu() {
             <NavLink to="/requerimentos">Requerimentos </NavLink> 
           </li>
           <li> 
-            < NavLink to="/login" onClick = {handleSair} > 
+            < NavLink to="/" onClick = {handleSair} > 
             Sair
             </NavLink>
           </li>
