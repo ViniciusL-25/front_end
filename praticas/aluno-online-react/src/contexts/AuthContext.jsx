@@ -7,18 +7,30 @@ function AuthProvider({ children }) {
   const [logado, setLogado] = useState(false);
 
   const login = (dados) => {
-    //chama a API backend 
-    setUsuario({nome: "Vinicius"});
+    // chama API backend futuramente
+
+    setUsuario({
+      nome: dados.username,
+    });
+
     setLogado(true);
-  }
+  };
 
   const logout = () => {
     setUsuario({});
     setLogado(false);
-  }
+  };
+
   return (
-  <AuthContext.Provider value={{logado, usuario, login, logout}}>
-    {children}
+    <AuthContext.Provider
+      value={{
+        logado,
+        usuario,
+        login,
+        logout,
+      }}
+    >
+      {children}
     </AuthContext.Provider>
   );
 }
