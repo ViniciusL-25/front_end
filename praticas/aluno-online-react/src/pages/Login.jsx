@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/useAuth";
 import "./Login.css";
+
 
 import cap from "../assets/learn.svg";
 import InputMatricula from "../components/InputMatricula";
@@ -16,14 +17,22 @@ function Login() {
   const [erroEmail, setErroEmail] = useState("");
   const [erroSenha, setErroSenha] = useState("");
 
- const { login } = useAuth();
+  const { login } = useAuth();
+
+  const handleEntrar = () => {
+  login({
+    username: email,
+    password: senha,
+  });
+
+  navigate("/dashboard");
+};
 
   function validarEmail(valor) {
     return /\S+@\S+\.\S+/.test(valor);
   }
   
   const navigate = useNavigate();
-  login({ username: "vinicius@iesb.br", password: "123456"}); 
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -51,10 +60,10 @@ function Login() {
       valido = false;
     }
 
+    
 
-    if (valido) {
-      
-      navigate("/dashboard");
+    if (valido){
+      handleEntrar();
     }
   }
 
