@@ -1,6 +1,6 @@
 import cap from "../assets/learn.svg";
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/AuthContext";
+import { useAuth } from "../contexts/useAuth";
 
 
 function Menu() {

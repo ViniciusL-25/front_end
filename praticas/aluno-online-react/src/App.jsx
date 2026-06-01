@@ -8,8 +8,10 @@ import Notas from "./pages/Notas";
 import Boletos from "./pages/Boletos";
 import Requerimentos from "./pages/Requerimento";
 import Layout from "./layout/Layout";
+import RequiForm from "./forms/RequerimentoForm";
 
 import { useAuth } from "./contexts/useAuth";
+
 
 function App() {
   const { logado } = useAuth();
@@ -34,10 +36,8 @@ function App() {
         <Route path="/faltas" element={<Faltas />} />
         <Route path="/boletos" element={<Boletos />} />
         <Route path="/notas" element={<Notas />} />
-        <Route
-          path="/requerimentos"
-          element={<Requerimentos />}
-        />
+        <Route path="/requerimentos" element={<Requerimentos />} />
+        <Route path="/novoreq" element={<RequerimentoForm />} />
       </Route>
     </Routes>
   );
