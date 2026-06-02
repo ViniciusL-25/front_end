@@ -4,40 +4,43 @@ import { useForm } from 'react-hook-form';
 
 function RequerimentoForm() {
     
-    const { register, handleSubmit, formState: { erros } } = useForm()
+    const { register, 
+        handleSubmit, 
+         reset,
+        formState: { errors },
+     } = useForm()
     
+    
+     const onSubmit = (data) => {
+        console.log(data);
+        reset
+     };
+
     return (
-        <div>
-            <Header />
+        <form onSubmit={handleSubmit(onSubmit)}>
+            <label>Tipo</label>
+            <input 
+            {...register("tipo" ,{
+                required: "Tipo é obrigatório",
+            })} 
+            />
+            {errors.tipo && <p>{errors.tipo.message}</p>}
 
-            <main>
-                <div className="card-post" >
-                    <h1>postagem</h1>
-                    <div className="line-post" ></div>
-                    <div className="card-bosy-post"> </div>
-                        <form>
-                            <div className="fields" >
-                                <label>Título</label>
-                                <input type="text" />
-                            </div>
 
-                             <div className="fields" >
-                                <label>Descrição</label>
-                                <input type="text" />
-                            </div>
-
-                             <div className="fields" >
-                                <label>Conteúdo</label>
-                                <textarea type="text"></textarea>
-                            </div>
-
-                            <div className="btn-post" >
-                                <button type="submit" >Enviar </button> 
-                            </div>
-
-                        </form>
-                </div>
-            </main>
-        </div>
+            <label>Descrição</label>
+            <textarea
+            {...register("descricao", {
+                required: "Descrição é obrigatória",
+                minLength: {
+                    value: 10,
+                    message: "Minímo 10 caracteres",
+                },
+            })}
+            />
+            {errors.descricao && <p>{errors.descricao.message}</p>}
+            <button type="submit">Enviar</button>
+        </form>
     )
 }
+
+export default RequerimentoForm;

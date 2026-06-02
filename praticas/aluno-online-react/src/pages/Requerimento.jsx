@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom"
 
  const listaRequerimentos = [
     { tipo: "Revisão de Menção", data: "15/12/2025", situacao: "Indeferido" },
@@ -17,6 +17,7 @@ import { useState } from "react";
 
 function Requerimentos() {
   const [menuAberto, setMenuAberto] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="flex flex-col md:flex-row min-h-screen bg-gray-200">
@@ -89,6 +90,10 @@ function Requerimentos() {
               ))}
             </tbody>
           </table>
+        </div>
+        <div>
+          <button onClick={() => navigate("/novoreq")} />
+            Novo Requerimento 
         </div>
       </main>
     </div>

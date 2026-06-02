@@ -8,7 +8,7 @@ import Notas from "./pages/Notas";
 import Boletos from "./pages/Boletos";
 import Requerimentos from "./pages/Requerimento";
 import Layout from "./layout/Layout";
-import RequiForm from "./forms/RequerimentoForm";
+import RequerimentoForm from "./forms/RequerimentoForm";
 
 import { useAuth } from "./contexts/useAuth";
 
