@@ -1,5 +1,24 @@
 {
-  "produtos": [],
+  "produtos": [
+    {
+      "nome": "Caio",
+      "preco": "5",
+      "unidade": "kg",
+      "id": "jvMkHvRBCN0"
+    },
+    {
+      "nome": "Patrick ",
+      "preco": "3",
+      "unidade": "kg",
+      "id": "YV0NTduqH6E"
+    },
+    {
+      "nome": "Banana",
+      "preco": "5",
+      "unidade": "kg",
+      "id": "BJVteFpiKho"
+    }
+  ],
   "forncedores": [],
   "pedidos": [],
   "usuarios": [],
