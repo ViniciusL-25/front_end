@@ -13,12 +13,13 @@ function RequerimentoForm() {
     
      const onSubmit = (data) => {
         console.log(data);
-        reset
+        reset();
      };
+     
 
     return (
         <form onSubmit={handleSubmit(onSubmit)}>
-            <label>Tipo</label>
+            <label>Tipo de Requerimento</label>
             <input 
             {...register("tipo" ,{
                 required: "Tipo é obrigatório",
@@ -27,7 +28,7 @@ function RequerimentoForm() {
             {errors.tipo && <p>{errors.tipo.message}</p>}
 
 
-            <label>Descrição</label>
+            <label>Descrição do Requerimento</label>
             <textarea
             {...register("descricao", {
                 required: "Descrição é obrigatória",
@@ -38,6 +39,17 @@ function RequerimentoForm() {
             })}
             />
             {errors.descricao && <p>{errors.descricao.message}</p>}
+
+            <label>Data do Requerimento</label>
+            <input
+            type="text"
+            readOnly
+            {...register("dataCriacao")} 
+            
+            value={new Date().toLocaleDateString("pt-BR")}
+            />
+            {errors.dataCriacao && <p>{errors.dataCriacao.message}</p>}
+
             <button type="submit">Enviar</button>
         </form>
     )
