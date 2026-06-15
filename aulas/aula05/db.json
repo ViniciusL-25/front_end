@@ -1,26 +1,26 @@
 {
   "produtos": [
     {
-      "nome": "Caio",
-      "preco": "5",
-      "unidade": "kg",
-      "id": "jvMkHvRBCN0"
+      "id": "29iWrIQBpFc",
+      "nome": "Banana Nanica",
+      "preco": "19,99",
+      "unidade": "Kg"
     },
     {
-      "nome": "Patrick ",
-      "preco": "3",
-      "unidade": "kg",
-      "id": "YV0NTduqH6E"
-    },
-    {
-      "nome": "Banana",
-      "preco": "5",
-      "unidade": "kg",
-      "id": "BJVteFpiKho"
+      "id": "cuwEguaWWbQ",
+      "nome": "Laranja Pera",
+      "preco": "15,99",
+      "unidade": "Un"
     }
   ],
-  "forncedores": [],
+  "fornecedores": [],
   "pedidos": [],
-  "usuarios": [],
+  "usuarios": [
+    {
+      "id": 1,
+      "email": "jose@iesb.br",
+      "senha": 123456 
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
