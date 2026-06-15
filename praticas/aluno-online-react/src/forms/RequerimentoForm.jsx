@@ -1,7 +1,14 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from "react-router-dom";
+import { criarRequerimento } from '../services/requerimentoService';
+
+
 
 function RequerimentoForm() {
+   console.log("Componente renderizado");
+  const navigate = useNavigate();
+  
   const {
     register,
     handleSubmit,
@@ -9,15 +16,23 @@ function RequerimentoForm() {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = (data) => {
-    console.log(data);
+  const onSubmit = async (data) => {
+   console.log("Entrou no onSubmit");
+   console.log(data)
+    try {
+       await criarRequerimento(data);
     reset();
+    navigate("/requerimentos");
+    } catch (error) {
+      console.error(error)
+      alert("Servidor indisponível")
+    }
   };
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
       <form
-        onSubmit={handleSubmit(onSubmit)}
+        onSubmit={handleSubmit(onSubmit)} 
         className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg"
       >
         <h2 className="text-2xl font-bold mb-6 text-center">
@@ -78,6 +93,7 @@ function RequerimentoForm() {
         <button
           type="submit"
           className="w-full bg-blue-600 text-white py-2 rounded-md font-semibold hover:bg-blue-700 transition"
+          
         >
           Enviar
         </button>
