@@ -92,8 +92,11 @@ function Requerimentos() {
           </table>
         </div>
         <div>
-          <button onClick={() => navigate("/novoreq")} />
+          <button className="flex items-center justify-center bg-blue-600 text-white px-4 py-2 rounded-md font-semibold hover:bg-blue-700 transition mt-4" 
+          onClick={() => navigate("/novoreq")} 
+          >
             Novo Requerimento 
+          </button>
         </div>
       </main>
     </div>
