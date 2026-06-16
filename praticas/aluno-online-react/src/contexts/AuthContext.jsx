@@ -1,4 +1,4 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState } from "react";
 import { loginApi } from "../services/authService";
 
 const AuthContext = createContext();
@@ -29,9 +29,4 @@ export function AuthProvider({ children }) {
   );
 }
 
-
-export function useAuth() {
-  return useContext(AuthContext);
-}
-
-export { AuthContext };
+export default AuthContext;

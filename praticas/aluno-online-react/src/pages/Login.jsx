@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/authContext";
+import { useAuth } from "../contexts/useAuth";
 import "./Login.css";
 
 import cap from "../assets/learn.svg";
@@ -31,9 +31,9 @@ function Login() {
       await login(email, senha); // 👈 AGORA CERTO
 
       navigate("/dashboard");
-    } catch (error) {
-      setErroLogin("Email ou senha incorretos.");
-    }
+    } catch {
+  setErroLogin("Email ou senha incorretos.");
+}
   }
 
   function handleSubmit(e) {
