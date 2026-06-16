@@ -1,27 +1,37 @@
-import { createContext, useState } from "react";
+import { createContext, useState, useContext } from "react";
+import { loginApi } from "../services/authService";
 
 const AuthContext = createContext();
 
-function AuthProvider({ children }) {
-  const [usuario, setUsuario] = useState({});
+export function AuthProvider({ children }) {
+  const [usuario, setUsuario] = useState(null);
   const [logado, setLogado] = useState(false);
 
-  const login = () => {
-    //chama a API backend 
-    setUsuario({nome: "Vinicius"});
+  const login = async (email, senha) => {
+    const dados = await loginApi(email, senha);
+
+    localStorage.setItem("token", dados.token);
+
+    setUsuario(dados.user);
     setLogado(true);
-  }
+  };
 
   const logout = () => {
-    setUsuario({});
+    localStorage.removeItem("token");
+    setUsuario(null);
     setLogado(false);
-  }
+  };
+
   return (
-  <AuthContext.Provider value={{logado, usuario, login, logout}}>
-    {children}
+    <AuthContext.Provider value={{ logado, usuario, login, logout }}>
+      {children}
     </AuthContext.Provider>
   );
 }
 
-export { AuthProvider };
+
+export function useAuth() {
+  return useContext(AuthContext);
+}
+
 export { AuthContext };
